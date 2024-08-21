@@ -1,0 +1,17 @@
+#contenedor-characters{
+    height: 500px;
+}
+
+.card{
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+}
+
+.scrolling-wrapper{
+    overflow-x: auto;
+     white-space: nowrap;
+     overflow-y: hidden; 
+     padding-top: 10px;
+     padding-bottom: 15px;
+}
