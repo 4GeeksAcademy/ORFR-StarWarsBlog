@@ -30,9 +30,12 @@ export const Home = () => {
 							<div className="card-body">
 								<h5 className="card-title text-center">{item.name}</h5>
 								<Link to={"/characters/"+item.uid}><a className="btn btn-Success" onClick={()=> actions.getCharacter(item.uid)} >Details</a></Link>
-								<a href="#" className="btn btn-light text-end">⭐</a>
+								<a className="btn btn-light text-end" onClick={()=>actions.saveToFavoritePeople(item.uid)}>⭐</a>
 							</div>
 						</div>))}
+						{/* <div className="card mx-1 bg-black"><img src="https://via.placeholder.com/150" className="card-img-top" alt="Imagen 1"/><div className="card-body">
+						<a className="btn btn-light text-end" >...</a></div>
+						</div> */}
 					</div>
 				</div>
 
@@ -43,8 +46,8 @@ export const Home = () => {
 						<img src="https://via.placeholder.com/150" className="card-img-top" alt="Imagen 1"/>
 							<div className="card-body">
 								<h5 className="card-title text-center">{item.name}</h5>
-								<a href="#" className="btn btn-Success">Details</a>
-								<a href="#" className="btn btn-light text-end">⭐</a>
+								<Link to={"/vehicles/"+item.uid}><a className="btn btn-Success" onClick={()=> actions.getVehicle(item.uid)}>Details</a></Link>
+								<a className="btn btn-light text-end">⭐</a>
 							</div>
 						</div>))}
 					</div>
@@ -57,7 +60,7 @@ export const Home = () => {
 						<img src="https://via.placeholder.com/150" className="card-img-top" alt="Imagen 1"/>
 							<div className="card-body">
 								<h5 className="card-title text-center">{item.name}</h5>
-								<a href="#" className="btn btn-Success">Details</a>
+								<Link to={"/planets/"+item.uid}><a className="btn btn-Success" onClick={()=> actions.getPlanet(item.uid)}>Details</a></Link>
 								<a href="#" className="btn btn-light text-end">⭐</a>
 							</div>
 						</div>))}

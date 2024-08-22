@@ -22,6 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			listVehicles: [],
 			vehicle: [],
 			favorites: [],
+			more: [],
 			
 		},
 		actions: {
@@ -40,8 +41,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({listCharacters: data.results}))
 					.catch(err => console.error(err))
-				
+					
 			},
+
+			// getNext: (more) => {
+			// 	fetch("https://www.swapi.tech/api/people/")
+			// 		.then(res => res.json())
+			// 		.then(data => setStore({listCharacters: data.more}),
+			// 					setStore({listCharacters: data.results}))
+			// 		.catch(err => console.error(err))
+				
+			// },
+
 
 			getCharacter: async (id) => {
 				const store = getStore();
@@ -50,16 +61,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let data = await response.json()
 					setStore({character: data.result.properties})
 					// store.character = data.result.properties;
-					console.log(store.character.name);
-					
-
-				}
-				
+					console.log(store.character.name);					
+				}				
 					catch (error){
 						console.log(error);
 						return
-					}
-				
+					}			
 			},
 
 			getPlanets: () => {
@@ -70,6 +77,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 			},
 
+			getPlanet: async (id) => {
+				const store = getStore();
+				try{
+					let response = await fetch("https://www.swapi.tech/api/planets/"+id)
+					let data = await response.json()
+					setStore({planet: data.result.properties})
+					// store.character = data.result.properties;
+					console.log(store.planet.name);
+				}
+					catch (error){
+						console.log(error);
+						return
+					}
+			},
+
 			getVehicles: () => {
 				fetch("https://www.swapi.tech/api/vehicles/")
 					.then(res => res.json())
@@ -78,6 +100,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 			},
 
+			getVehicle: async (id) => {
+				const store = getStore();
+				try{
+					let response = await fetch("https://www.swapi.tech/api/vehicles/"+id)
+					let data = await response.json()
+					setStore({character: data.result.properties})
+					// store.character = data.result.properties;
+					console.log(store.vehicle.name);
+				}
+					catch (error){
+						console.log(error);
+						return
+					}
+			},
+
+			deleteFavorite: (index) => {
+				const store = getStore();
+        
+				const newlista = store.favorites.filter((item,indexdelete)=>indexdelete!==index);
+				// setStore({ listaContactos: newlista });
+				// console.log(newlista);
+				setStore({ favorites: newlista });
+				console.log(newlista);
+				
+				
+			},    
+
+
+			saveToFavoritePeople: (uid) =>{
+				const store = getStore();
+				// store.favorites = store.listCharacters.find((item)=>item.uid ==uid);
+				setStore({favorites: [...store.favorites,store.listCharacters.find((item)=>item.uid ==uid)]})
+				console.log(store.favorites, typeof store.favorites);
+			},
 
 			changeColor: (index, color) => {
 				//get the store
