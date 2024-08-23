@@ -10,31 +10,35 @@ export const Planets =()=>{
     const params = useParams();
 
     useEffect(()=>{
-        // actions.getCharacters();
+        // actions.getplanets();
         actions.getPlanet(params.id);
         },[])
 
         console.log(store.planet);
         
 return(
+    <div className="div-bg">
  
- 
-    <div>
-        <div className="card mb-3">
-            <div className="row g-0">
-            <div className="col-md-4">
-                <img src="..." className="img-fluid rounded-start" alt="..."/>
-            </div>
-            <div className="col-md-8">
-                <div className="card-body">
-                <h5 className="card-title">{store.planet.name}</h5>
-                <p className="card-text">This is a wider. {store.planet.name}</p>
-                <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+    <div className="contenedor-ficha">
+        <div className="row">
+            <div className="col-4">
+                <div className="datos-ficha">
+                    <h2>{store.planet.name}</h2>
+                    <h5>DIAMETER:   {store.planet.diameter}</h5>
+                    <h5>ROTATION PER.:   {store.planet.rotation_period}</h5>
+                    <h5>ORBITAL PER.:   {store.planet.orbital_period}</h5>
+                    <h5>GRAVITY:   {store.planet.gravity}</h5>
+                    <h5>POPULATION:   {store.planet.population}</h5>
+                    <h5>CLIMATE:   {store.planet.climate}</h5>
+                    <h5>TERRAIN:   {store.planet.terrain}</h5>
                 </div>
+            </div >
+            <div className="col-8">
+                <div className="contenedor-img-ficha"><img src={`https://starwars-visualguide.com/assets/img/planets/${params.id}.jpg`}  /></div>
             </div>
-            </div>
-         </div>
-  </div>  
+        </div>    
+    </div>  
+</div> 
        
 );
 

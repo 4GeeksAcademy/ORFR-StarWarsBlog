@@ -17,25 +17,27 @@ export const Characters =()=>{
         console.log(store.character);
         
 return(
+ <div className="div-bg">
  
- 
-    <div>
-        <div className="card mb-3">
-            <div className="row g-0">
-            <div className="col-md-4">
-                <img src="..." className="img-fluid rounded-start" alt="..."/>
-            </div>
-            <div className="col-md-8">
-                <div className="card-body">
-                <h5 className="card-title">{store.character.name}</h5>
-                <p className="card-text">This is a wider. {store.character.name}</p>
-                <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+        <div className="contenedor-ficha">
+            <div className="row">
+                <div className="col-4">
+                    <div className="datos-ficha">
+                        <h2>{store.character.name}</h2>
+                        <h5>BIRTH YEAR:   {store.character.birth_year}</h5>
+                        <h5>HEIGHT:   {store.character.height}</h5>
+                        <h5>MASA:   {store.character.mass}</h5>
+                        <h5>COLOR:   {store.character.skin_color}</h5>
+                        <h5>EYE COLOR:   {store.character.eye_color}</h5>
+                        <h5>GENDER:   {store.character.gender}</h5>
+                    </div>
+                </div >
+                <div className="col-8">
+                    <div className="contenedor-img-ficha"><img src={`https://starwars-visualguide.com/assets/img/characters/${params.id}.jpg`}  /></div>
                 </div>
-            </div>
-            </div>
-         </div>
-  </div>  
-       
+            </div>    
+        </div>  
+  </div>      
 );
 
 

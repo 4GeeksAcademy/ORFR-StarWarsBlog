@@ -105,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try{
 					let response = await fetch("https://www.swapi.tech/api/vehicles/"+id)
 					let data = await response.json()
-					setStore({character: data.result.properties})
+					setStore({vehicle: data.result.properties})
 					// store.character = data.result.properties;
 					console.log(store.vehicle.name);
 				}
@@ -130,8 +130,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			saveToFavoritePeople: (uid) =>{
 				const store = getStore();
-				// store.favorites = store.listCharacters.find((item)=>item.uid ==uid);
 				setStore({favorites: [...store.favorites,store.listCharacters.find((item)=>item.uid ==uid)]})
+				// console.log(store.favorites, typeof store.favorites);
+			},
+
+			saveToFavoriteVehicle: (uid) =>{
+				const store = getStore();
+				setStore({favorites: [...store.favorites,store.listVehicles.find((item)=>item.uid ==uid)]})
+				console.log(store.favorites, typeof store.favorites);
+			},
+
+			saveToFavoritePlanet: (uid) =>{
+				const store = getStore();
+				setStore({favorites: [...store.favorites,store.listPlanets.find((item)=>item.uid ==uid)]})
 				console.log(store.favorites, typeof store.favorites);
 			},
 

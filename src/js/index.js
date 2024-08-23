@@ -6,6 +6,9 @@ import {createRoot} from 'react-dom/client'
 import "../styles/index.css";
 import "../styles/home.css";
 import "../styles/characters.css";
+import "../styles/vehicles.css";
+import "../styles/planets.css";
+import "../styles/navbar.css"
 
 //import your own components
 import Layout from './layout.js'
